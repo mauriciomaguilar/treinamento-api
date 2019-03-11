@@ -29,5 +29,7 @@ public class UserController {
 		User userSaved = service.save(user);
 		return ResponseEntity.ok(userSaved);
 	}
+	
+	
 
 }
