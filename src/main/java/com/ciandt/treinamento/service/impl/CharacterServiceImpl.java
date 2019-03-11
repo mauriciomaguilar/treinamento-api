@@ -13,14 +13,7 @@ import com.ciandt.treinamento.util.ApiUtils;
 public class CharacterServiceImpl implements CharacterService {
 
 	public List<Personagem> returnAllCharacters(Integer limit) {
-		String url = ApiUtils.buildUrl(MarvelApiConstants.PATH_CHARACTERS, MarvelApiConstants.PRIVATE_KEY,
-				MarvelApiConstants.API_KEY_VALUE);
-		ResponseCharacterJson personagens = (ResponseCharacterJson) ApiUtils.getObject(url,
-				ResponseCharacterJson.class);
-		List<Personagem> listaPersonagem = new ArrayList<>();
-		personagens.getData().getResults().stream().map(p -> listaPersonagem.add(p));
-		return listaPersonagem;
-
+		return findAll();
 	}
 
 	@Override
@@ -33,5 +26,15 @@ public class CharacterServiceImpl implements CharacterService {
 	public Personagem searchByName(String nome) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public List<Personagem> findAll() {
+		String url = ApiUtils.buildUrl(MarvelApiConstants.PATH_CHARACTERS, MarvelApiConstants.PRIVATE_KEY,
+				MarvelApiConstants.API_KEY_VALUE);
+		ResponseCharacterJson personagens = (ResponseCharacterJson) ApiUtils.getObject(url,
+				ResponseCharacterJson.class);
+		List<Personagem> listaPersonagem = new ArrayList<>();
+		personagens.getData().getResults().stream().map(p -> listaPersonagem.add(p));
+		return listaPersonagem;
 	}
 }
