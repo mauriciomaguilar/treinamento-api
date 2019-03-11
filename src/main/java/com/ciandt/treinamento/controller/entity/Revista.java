@@ -15,21 +15,24 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Personagem {
-
-	@JsonProperty("name")
-	private String nome;
+public class Revista {
 
 	@JsonProperty("id")
 	private Long identificador;
 
+	@JsonProperty("title")
+	private String titulo;
+
 	@JsonProperty("description")
 	private String descricao;
 
-	@JsonProperty("thumbnail")
-	private String imagem;
+	@JsonProperty("pageCount")
+	private Integer numeroPaginas;
 
-	@JsonProperty("comics")
-	private List<Revista> revistas;
+	@JsonProperty("thumbnail")
+	private String imagemCapa;
+
+	@JsonProperty("characters")
+	private List<Personagem> personagens;
 
 }
