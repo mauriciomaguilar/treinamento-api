@@ -18,5 +18,6 @@ public class Personagem {
 
 	@JsonProperty("name")
 	private String name;
+	private Long id;
 
 }
