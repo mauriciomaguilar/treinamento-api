@@ -22,7 +22,8 @@ public class PersonagemController{
 
 	@GetMapping("/characters/{id}")
 	public ResponseEntity<PersonagemEntity> getOneCharacterById(@PathVariable Long id) {
-		PersonagemEntity personagem;
+		PersonagemEntity personagem = service.searchById(id);
+		
 		return null;
 	}
 }

@@ -2,14 +2,14 @@ package com.ciandt.treinamento.service;
 
 import java.util.List;
 
-import com.ciandt.treinamento.entity.PersonagemEntity;
+import com.ciandt.treinamento.controller.entity.Personagem;
 
 public interface CharacterService {
 
-	PersonagemEntity searchAll();
+	Personagem searchAll();
 	
-	PersonagemEntity searchById(Long id);
+	Personagem searchById(Long id);
 	
-	List<PersonagemEntity> searchByName(String name);
+	List<Personagem> searchByName(String name);
 	
 }
