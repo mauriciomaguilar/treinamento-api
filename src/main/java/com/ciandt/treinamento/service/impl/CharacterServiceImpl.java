@@ -16,7 +16,7 @@ import com.ciandt.treinamento.util.ApiUtils;
 public class CharacterServiceImpl  {
 	
 	@GetMapping(path = "/marvel", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<Personagem>> returnAllCharacters(@RequestParam(name = "offset", required = false) Integer quantidade) {
+	public ResponseEntity<List<Personagem>> returnAllCharacters(@RequestParam(name = "limit", required = false) Integer limit) {
 		String url = ApiUtils.buildUrl(MarvelApiConstants.PATH_CHARACTERS,
 				MarvelApiConstants.PRIVATE_KEY, 
 				MarvelApiConstants.API_KEY_VALUE);

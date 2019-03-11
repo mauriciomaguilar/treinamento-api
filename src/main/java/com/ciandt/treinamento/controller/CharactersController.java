@@ -10,13 +10,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1")
 public class CharactersController {
 	
-	@GetMapping("/characters/")
-	public ResponseEntity<Object> returnAllCharacters(@RequestParam(name = "quantidade", required = false) Long quantidade) {
-//		CharacterService characters = new CharacterServiceImpl();
-//		return (ResponseEntity<Object>) characters.characterList(quantidade);
-		return null;
-		
-	}
-	
 
 }
