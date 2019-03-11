@@ -1,12 +1,8 @@
 package com.ciandt.treinamento.service;
 
-public class CharacterService {
+import com.ciandt.treinamento.entity.PersonagemEntity;
 
+public interface CharacterService {
 
-
-	public Object characterList(Long quantidade) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	public PersonagemEntity search();
 }
