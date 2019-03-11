@@ -34,6 +34,6 @@ public class PersonagemEntity implements Serializable {
 
 	private String imagem;
 
-	private List<RevistaEntity> revistas;
+//	private List<RevistaEntity> revistas;
 
 }
