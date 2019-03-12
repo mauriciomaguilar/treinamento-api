@@ -1,7 +1,5 @@
 package com.ciandt.treinamento.controller.entity;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -27,9 +25,6 @@ public class Personagem {
 	private String descricao;
 
 	@JsonProperty("thumbnail")
-	private String imagem;
-
-	@JsonProperty("comics")
-	private List<Revista> revistas;
+	private Thumbnail thumbnail;
 
 }

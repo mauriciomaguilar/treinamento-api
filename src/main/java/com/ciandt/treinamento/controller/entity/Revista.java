@@ -30,7 +30,7 @@ public class Revista {
 	private Integer numeroPaginas;
 
 	@JsonProperty("thumbnail")
-	private String imagemCapa;
+	private Thumbnail imagemCapa;
 
 	@JsonProperty("characters")
 	private List<Personagem> personagens;
