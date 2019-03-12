@@ -10,6 +10,7 @@
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 30px;
+		width: 75%;
 	}
 	
 	.content {
@@ -32,6 +33,9 @@
 		width: 70px;
 		vertical-align: middle;
 	}
+	.clear {
+	  clear: both;
+	}
 	</style>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -41,6 +45,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.js"></script>
+	<script src="dirPagination.js"></script>
 	
 	<script type="text/javascript">
   
@@ -57,16 +62,19 @@
 			});
 		}	
 
-		var app = angular.module('tabelaEstagio', []);
+		var app = angular.module('tabelaEstagio', ['angularUtils.directives.dirPagination']);
 
 		app.controller('estagioController', function($scope, estagioService){
 
-			$scope.findAll = function (){
-				console.log("entrou findall");
+			$scope.findAll = function (){				
 				estagioService.findAll(function(erro, status, body){
 					$scope.lista = body.data.results;
 				});
-			}
+			};
+			
+			$scope.findByName = function (){
+				console.log("entrou findByName");			
+			};
 			
 		});
 
@@ -94,20 +102,24 @@
 	</script>
 </head>
 <body>
-	<div id="tabela-lista-personagem" class="content" ng-controller="estagioController as controller">
+	<div id="tabela-lista-personagem" class="content" ng-controller="estagioController as controller">	
+		<label> 				
+			<input placeholder="Buscar por nome" ng-model="buscaNome" type="text" name="nome" id="nome" maxlength="50"/>  			
+		</label>
 		<input type="button" class="botao-findAll" value="Atualizar Lista"  ng-click="findAll()"/>
 		<table class="tabela">
-		<tr>
-			<th class="largura-fixa150">Foto</th>
-			<th class="largura-fixa300" >Nome</th>
-			<th class="largura-fixa300" >Descrição</th>
-		</tr>
-		<tr ng-repeat="item in lista">
-			<td><img class="imagem-personagem " src="{{item.thumbnail.path}}.{{item.thumbnail.extension}}"<td>
-			<td>{{item.name}}</td>
-			<td>{{item.description}}</td>
-		<tr>
-		</table>		
+			<tr>
+				<th class="largura-fixa150">Foto</th>
+				<th class="largura-fixa300" >Nome</th>
+				<th class="largura-fixa300" >Descrição</th>
+			</tr>
+			<tr dir-paginate="item in lista|filter:{name:buscaNome}|itemsPerPage:5">
+				<td><img class="imagem-personagem " src="{{item.thumbnail.path}}.{{item.thumbnail.extension}}"<td>
+				<td>{{item.name}}</td>
+				<td>{{item.description}}</td>
+			<tr>
+		</table>
+		<dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>		
 	<div>
 </body>
 </html>

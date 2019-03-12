@@ -13,7 +13,6 @@ import com.ciandt.treinamento.util.ApiUtils;
 @RequestMapping("api/v1")
 public class UserController {
 
-	//@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping(path = "/marvel", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Object getString() {
 		String url = ApiUtils.buildUrl(MarvelApiConstants.PATH_CHARACTERS, 
