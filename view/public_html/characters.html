@@ -1,0 +1,29 @@
+<div id="tabela-lista-personagem" class="content-table" ng-controller="characterController as controller">
+    <div class="button-div">
+        <input placeholder="Buscar por nome" ng-change="findCharacterByName()" ng-model="form.buscaNome" type="text"
+            maxlength="50" />
+        <input class="button-list" type="button" value="Listar Todos" ng-click="findAllCharacters()" />
+    </div>
+    <table class="table-header">
+        <tr>
+            <th>Imagem</th>
+            <th>Nome</th>
+            <th>Descricao</th>
+            <th colspan="2">Ação</th>
+        </tr>
+        <tr dir-paginate="item in lista|itemsPerPage:5">
+            <td>
+                <img class="imagem-personagem" ng-src="{{item.thumbnail.path}}.{{item.thumbnail.extension}}" />
+            </td>
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+            <td>
+                <input type="button" value="Editar" />
+            </td>
+            <td>
+                <input type="button" value="Remover" />
+            </td>
+        </tr>
+    </table>
+    <dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>
+</div>

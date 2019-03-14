@@ -1,0 +1,24 @@
+<div id="tabela-lista-revista" class="content-table" ng-controller="comicController as controller">
+    <div class="button-div">
+        <input placeholder="Buscar por título" ng-change="findComicByName()" ng-model="form.buscaTitulo" type="text"
+            maxlength="50" />
+        <input class="button-list" type="button" value="Listar Todos" ng-click="findAllComics()" />
+    </div>
+    <table class="table-header">
+        <tr>
+            <th>Imagem</th>
+            <th>Titulo</th>
+            <th>Descricao</th>
+            <th>Ano</th>
+        </tr>
+        <tr dir-paginate="item in lista|itemsPerPage:5">
+            <td>
+                <img class="imagem-personagem" ng-src="{{item.thumbnail.path}}.{{item.thumbnail.extension}}" />
+            </td>
+            <td>{{item.title}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.modified | date: 'dd/MM/yyyy'}}</td>
+        </tr>
+    </table>
+    <dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>
+</div>
